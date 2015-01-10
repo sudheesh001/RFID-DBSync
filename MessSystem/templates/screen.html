@@ -1,0 +1,18 @@
+{% extends "header.html" %}
+{% block body %}
+<div class="container">
+	<div class="row jumbotron ">
+	  <div class="col-lg-12">
+	  	<div class="col-lg-4">
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+		</div>
+	    <div class="col-lg-8">
+	      <h1>Welcome to NIT Warangal's Mess System</h1>
+	      <p>This mess system aims at keeping track of your details with respect to RFID tag that is present on your mess card. Depending on the time of the day that is being used, the mess sytem will automatically classify the Breakfast, Lunch and Dinner and credit accordingly</p>
+	      <p><a class="btn btn-success btn-lg" href="/login">Login</a>
+	      <a class="btn btn-info btn-lg" href="/register">Register</a></p>
+	    </div>
+	  </div>
+	</div>
+{% endblock %}
+</html>

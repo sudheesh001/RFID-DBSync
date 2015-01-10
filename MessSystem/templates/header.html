@@ -1,0 +1,34 @@
+<!doctype html>
+<title>NIT Warangal Mess Tracking System</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">NIT Warangal Mess System</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+      {% if session.logged_in %}
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Your Mess profile</a></li>
+        <li><a href="#">Stats</a></li>
+      </ul>
+      {% endif %}
+      <ul class="nav navbar-nav pull-right">
+        {% if not session.logged_in %}
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+        {% else %}
+        <li><a href="/logout">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</head>
+{% block body %}{% endblock %}

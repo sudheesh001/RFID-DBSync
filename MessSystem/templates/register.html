@@ -1,0 +1,78 @@
+{% extends "header.html" %}
+{% block body %}
+<form class="form-horizontal" action="{{ url_for('add') }}" method="post" accept-charset="utf-8">
+<fieldset>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">Username</label>  
+  <div class="col-md-4">
+  <input id="username" name="username" type="text" placeholder="Enter your username here" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password</label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" placeholder="Enter your password here" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="confirmpassword">Confirm Password</label>
+  <div class="col-md-4">
+    <input id="confirmpassword" name="confirmpassword" type="password" placeholder="re enter your password here" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Name</label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" placeholder="Enter your Name her" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="regno">Registration Number</label>  
+  <div class="col-md-4">
+  <input id="regno" name="regno" type="text" placeholder="Enter your registration no. here" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="class">Mess Type</label>
+  <div class="col-md-4">
+    <select id="messtype" name="messtype" class="form-control">
+      <option value="IFCA">IFC A</option>
+      <option value="IFCB">IFC B</option>
+      <option value="FIRSTMESS">Ist Mess</option>
+      <option value="SECONDMESS">IInd Mess</option>
+      <option value="THIRDMESS">IIIrd Mess</option>
+      <option value="FOURTHMESS">IVth Mess</option>
+      <option value="FIFTHMESS">Vth Mess</option>
+      <option value="LHMESS">LH Mess</option>
+    </select>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="login"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+{% endblock %}

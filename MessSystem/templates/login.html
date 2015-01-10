@@ -1,0 +1,43 @@
+{% extends "header.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-lg-4 pull-right">
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+	</div>
+	<div class="col-lg-8 pull-left">
+		<h1 style="text-align:center;">Login Here</h1>
+		<br>
+		<form class="form-horizontal" action="{{ url_for('login') }}" method="post" accept-charset="utf-8">
+			<fieldset>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="username">Username</label>  
+					<div class="col-md-4">
+						<input id="username" name="username" type="text" placeholder="Enter your username here" class="form-control input-md" required="">
+
+					</div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Password</label>
+					<div class="col-md-4">
+						<input id="password" name="password" type="password" placeholder="Enter your password here" class="form-control input-md" required="">
+
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="login"></label>
+					<div class="col-md-4">
+						<button id="login" name="login" class="btn btn-success">Submit</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+</div>
+{% endblock %}
