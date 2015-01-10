@@ -1,0 +1,28 @@
+
+MUSCLE PC/SC Lite Test Program
+
+Testing SCardEstablishContext    : Command successful.
+Testing SCardGetStatusChange 
+Please insert a working reader   : Command successful.
+Testing SCardListReaders         : Command successful.
+Reader 01: OMNIKEY CardMan (076B:5321) 5321(1)
+Reader 02: OMNIKEY CardMan (076B:5321) 5321(2)
+Enter the reader number          : Waiting for card insertion         
+                                 : Command successful.
+Testing SCardConnect             : Command successful.
+Testing SCardStatus              : Command successful.
+Current Reader Name              : OMNIKEY CardMan (076B:5321) 5321(2)
+Current Reader State             : 0x54
+Current Reader Protocol          : 0x0
+Current Reader ATR Size          : 20 (0x14)
+Current Reader ATR Value         : 3B 8F 80 01 80 4F 0C A0 00 00 03 06 03 00 02 00 00 00 00 69 
+Testing SCardDisconnect          : Command successful.
+Testing SCardReleaseContext      : Command successful.
+Testing SCardEstablishContext    : Command successful.
+Testing SCardGetStatusChange 
+Please insert a working reader   : Command successful.
+Testing SCardListReaders         : Command successful.
+Reader 01: OMNIKEY CardMan (076B:5321) 5321(1)
+Reader 02: OMNIKEY CardMan (076B:5321) 5321(2)
+Enter the reader number          : Invalid Value - try again
+Enter the reader number          : 
