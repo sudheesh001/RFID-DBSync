@@ -1,0 +1,25 @@
+<?xml version="1.0" type="UTF-8"?>
+<cardpeek>
+  <version>0.8.3</version>
+  <node>
+    <attr name="classname">card</attr>
+    <attr name="label">841239</attr>
+    <node>
+      <attr name="classname">atr</attr>
+      <attr name="label">NITW</attr>
+      <attr name="size">20</attr>
+      <attr name="val" encoding="bytes">8:3B8F8001804F0CA0000003060300020000000069</attr>
+      <node>
+        <attr name="classname">item</attr>
+        <attr name="label">Possibly identified card</attr>
+        <attr name="val">RFID - NIW e-card</attr>
+      </node>
+    </node>
+    <node>
+      <attr name="classname">block</attr>
+      <attr name="label">UID</attr>
+      <attr name="val" encoding="bytes">8:9C41B012</attr>
+      <attr name="alt">2621550610</attr>
+    </node>
+  </node>
+</cardpeek>

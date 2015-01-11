@@ -1,0 +1,48 @@
+{% extends "header.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-lg-4 pull-right">
+		<form action="{{url_for('update_card_detail')}}" method="POST">
+      <div class="col-md-8" style="display:none;"><input type="text" id="{{values[0][3]}}" name="regno" class="form-control input-md" value="{{values[0][3]}}"></div>
+      <div class="col-md-6"><input type="text" id="cardno" name="cardno" class="form-control input-md" placeholder="Enter the card number for {{values[0][1]}}"></div>
+      <div class="form-group">
+  <label class="col-md-4 control-label" for="login"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-success">Update Card ID</button>
+  </div>
+</div>
+    </form>
+	</div>
+	<div class="col-lg-8 pull-left">
+		<h1 style="text-align:center;"> User View</h1>
+
+		<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Card Id</th>      
+      <th>User Name</th>
+      <th>Name</th>
+      <th>Reg No</th>
+      <th>Mess Type</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for value in data %}
+    <tr>
+      <td>{{value[0]}}</td>
+      <td>{{value[1]}}</td>
+      <td>{{value[2]}}</td>
+      <td>{{value[3]}}</td>
+      <td>{{value[4]}}</td>
+      <td>{{value[5]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+	</div>
+  <form action="{{url_for('update_cardid')}}" method="POST">
+    <div class="col-md-7"><input type="text" name="regno" id="regno" placeholder="Enter registration number to update card for" class="form-control input-md"></div>
+  </form>
+</div>
+{% endblock %}

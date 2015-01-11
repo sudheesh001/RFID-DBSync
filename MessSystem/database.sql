@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `FoodCount` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `Student` (
+	`cardid` text,
 	`UserName` text NOT NULL,
 	`Name` text NOT NULL,
 	`RegNo` text NOT NULL,

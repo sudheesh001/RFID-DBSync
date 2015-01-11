@@ -6,7 +6,7 @@ from flaskext.mysql import MySQL
 from config import config, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
-import datetime
+import datetime, subprocess
  
 import logging
 from logging.handlers import SMTPHandler
@@ -44,6 +44,15 @@ def page_not_found(e):
 def screen():
 	return render_template('screen.html')
 
+@app.route('/admin')
+def admin():
+	db=get_cursor()
+	sql = 'SELECT * from Student'
+	db.execute(sql)
+	data = db.fetchall()
+	db.execute("COMMIT")
+	return render_template('admin.html',data=data)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	global store
@@ -63,7 +72,14 @@ def login():
 		else:
 			session['logged_in'] = True
 			message = "You have successfully logged in"
-			return render_template('screen.html')
+			if(username!="admin"):
+				sql = 'Select * from Student where UserName="%s"'%username
+				db.execute(sql)
+				data = db.fetchall()
+				db.execute("Commit")
+				return render_template('dashboard.html', data=data)
+			else:
+				return redirect(url_for('admin'))
 	return render_template('login.html')
 
 @app.route('/register')
@@ -88,14 +104,53 @@ def add():
 			total = 0
 			if password != confirm_password:
 				return redirect(url_for('register'))
-			sql = 'INSERT INTO Student (UserName, Name, RegNo, MessType, Total) values ("%s","%s","%s","%s",%s)'
-			db.execute(sql%(username,name,regno,messtype,total))
+			sql = 'INSERT INTO Student (cardid, UserName, Name, RegNo, MessType, Total) values ("%s", "%s","%s","%s","%s",%s)'
+			db.execute(sql%("NULL",username,name,regno,messtype,total))
 			db.execute("COMMIT")
 			db.execute("INSERT INTO Login values('%s', MD5('%s'))"%(username,password))
 			db.execute("COMMIT")
 			return redirect(url_for('screen'))
 		return redirect(url_for('register'))
 	return redirect(url_for('register'))
+
+@app.route('/card_swipe', methods=['GET','POST'])
+def card_swipe():
+	retvalue = os.system("ps ux")
+	# cmd = ["./cardpeek", "-r", "\'pcsc://OMNIKEY CardMan (076B:5321) 5321 (OKCM0070403141403523888478428916) 00 01\'", "-e", "\'dofile(luascript)\'", ">", "test"]
+	# p = subprocess.Popen(cmd, stdout = subprocess.PIPE,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+	# out,err = p.communicate()
+	print retvalue
+	return redirect(url_for('screen'))
+
+
+@app.route('/update_cardid', methods=['GET','POST'])
+def update_cardid():
+	if request.method=='POST':
+		db=get_cursor()
+		regno = request.form['regno']
+		sql = 'Select * from Student where RegNo="%s"'%regno
+		db.execute(sql)
+		data = db.fetchall()
+		values = data
+		db.execute("Commit")
+		if not data:
+			return redirect(url_for('/'))
+		else:
+			return render_template('user.html',data=data, values=values)
+	return redirect(url_for('admin'))
+
+@app.route('/update_card_detail', methods=['GET','POST'])
+def update_card_detail():
+	if request.method=='POST':
+		db=get_cursor()
+		userdetail = request.form['regno']
+		cardid = request.form['cardno']
+		sql = 'UPDATE Student SET cardid="%s" where RegNo="%s"'%(cardid, userdetail)
+		db.execute(sql)
+		db.execute("COMMIT")
+		return redirect(url_for('admin'))
+	return redirect(url_for('update_cardid'))
+
 
 @app.route('/logout')
 def logout():

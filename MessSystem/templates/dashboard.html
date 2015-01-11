@@ -1,0 +1,36 @@
+{% extends "header.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-lg-4 pull-right">
+		<img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+	</div>
+	<div class="col-lg-8 pull-left">
+		<h1 style="text-align:center;">Details</h1>
+
+		<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Card Id</th>
+      <th>User Name</th>
+      <th>Name</th>
+      <th>Reg No</th>
+      <th>Mess Type</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for value in data %}
+    <tr>
+      <td>{{value[0]}}</td>
+      <td>{{value[1]}}</td>
+      <td>{{value[2]}}</td>
+      <td>{{value[3]}}</td>
+      <td>{{value[4]}}</td>
+      <td>{{value[5]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+	</div>
+</div>
+{% endblock %}
